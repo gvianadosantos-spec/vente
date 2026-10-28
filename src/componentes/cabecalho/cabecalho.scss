@@ -1,0 +1,99 @@
+/* Animação que faz o fogo/sangue deslizar pelo cabeçalho */
+@keyframes magiaGoticaCabecalho {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Animação pulsante para dar "vida" ao componente */
+@keyframes pulsoMaldito {
+  0% { box-shadow: 0 0 15px rgba(139, 0, 0, 0.5); }
+  50% { box-shadow: 0 0 35px rgba(255, 69, 0, 0.8); }
+  100% { box-shadow: 0 0 15px rgba(139, 0, 0, 0.5); }
+}
+
+/* Rotação lenta e sinistra para o sigilo da direita */
+@keyframes rotacaoSombria {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.comp-cabecalho {
+  width: 1000px;
+  max-width: 90vw; /* Garante que não quebre em telas menores */
+  padding: 15px 40px;
+  border: 2px solid #8B0000; /* Borda cor de sangue coagulado */
+  border-radius: 32px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px; /* Dá espaço entre os sigilos e o texto central */
+
+  /* O gradiente gótico animado que criamos na última conversa */
+  background: linear-gradient(
+    90deg, 
+    #120505, 
+    #8B0000, 
+    #DC143C, 
+    #FF4500, 
+    #DC143C, 
+    #8B0000, 
+    #120505
+  );
+  background-size: 200% auto;
+  
+  /* Combina o fundo em movimento com a sombra pulsante */
+  animation: 
+    magiaGoticaCabecalho 6s linear infinite,
+    pulsoMaldito 4s ease-in-out infinite;
+
+  transition: all 0.4s ease;
+
+  h1 {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+    text-shadow: 0 0 12px rgba(255, 69, 0, 0.9); /* Brilho de fogo no texto */
+  }
+
+  /* Estilos para os sigilos mágicos acompanharem a estética */
+  .icone-sigilo {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    
+    /* MÁGICA: Remove o fundo preto das imagens */
+    mix-blend-mode: screen; 
+    filter: drop-shadow(0 0 5px rgba(255, 69, 0, 0.6));
+    transition: transform 0.4s ease, filter 0.4s ease;
+  }
+
+  /* Aplica a rotação contínua ao sigilo em formato de espiral */
+  .espiral {
+    animation: rotacaoSombria 15s linear infinite;
+  }
+
+  /* Interação ao passar o mouse por cima do cabeçalho */
+  &:hover {
+    transform: scale(1.02);
+    border-color: #FF4500;
+    
+    h1 {
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Fica mais brilhante */
+    }
+
+    .icone-sigilo {
+      transform: scale(1.3) rotate(15deg);
+      filter: drop-shadow(0 0 15px rgba(255, 69, 0, 1)); /* Sigilos inflamam */
+    }
+
+    .espiral {
+      /* Acelera a espiral quando o mouse está em cima */
+      animation: rotacaoSombria 3s linear infinite;
+      transform: scale(1.3);
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.Contador {
+  text-align: center;
+}
+
+.Titulo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Tudo{
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.botao{
+  background-color: brown;
+  width: 75px;
+  height: 50px;
+  border-radius: 16px;
+}

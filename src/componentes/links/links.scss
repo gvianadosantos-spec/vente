@@ -1,0 +1,122 @@
+/* Animação que faz o gradiente de magia gótica deslizar */
+@keyframes magiaGotica {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Animação de entrada em cascata (botão cai e quica) */
+@keyframes slideInBounceLinks {
+  0% { transform: translateY(-50px) scale(0.5); opacity: 0; }
+  60% { transform: translateY(10px) scale(1.1); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Animação de tremor sombrio ao passar o rato */
+@keyframes shakeHover {
+  0% { transform: scale(1.15) rotate(0deg); }
+  25% { transform: scale(1.15) rotate(-2deg); }
+  50% { transform: scale(1.15) rotate(2deg); }
+  75% { transform: scale(1.15) rotate(-2deg); }
+  100% { transform: scale(1.15) rotate(0deg); }
+}
+
+.botoes-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #05020200; /* Fundo transparente/escuro */
+  min-height: 100vh;
+
+  /* Aplica um atraso (delay) em cascata para cada botão entrar um a um na página */
+  .btn-link:nth-child(1) { animation-delay: 0.1s; }
+  .btn-link:nth-child(2) { animation-delay: 0.3s; }
+  .btn-link:nth-child(3) { animation-delay: 0.5s; }
+  .btn-link:nth-child(4) { animation-delay: 0.7s; }
+  .btn-link:nth-child(5) { animation-delay: 0.9s; }
+  .btn-link:nth-child(6) { animation-delay: 1.1s; }
+  .btn-link:nth-child(7) { animation-delay: 1.3s; }
+}
+
+.btn-link {
+  /* Alinhamento do texto e da imagem lado a lado */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; 
+  padding: 14px 30px;
+  
+  /* Gradiente gótico */
+  background: linear-gradient(
+    90deg, 
+    #120505, 
+    #8B0000, 
+    #DC143C, 
+    #FF4500, 
+    #DC143C, 
+    #8B0000, 
+    #120505
+  );
+  background-size: 200% auto;
+  
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+  min-width: 320px; 
+  
+  /* Mantemos apenas esta animação base */
+  animation: 
+    slideInBounceLinks 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) backwards,
+    magiaGotica 5s linear infinite;
+
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* Estilos específicos para os sigilos mágicos */
+  .icone-sigilo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    mix-blend-mode: screen; 
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+  }
+
+  .espiral {
+    border-radius: 50%;
+  }
+
+  /* Efeitos ao passar o rato (Hover) */
+  &:hover {
+    /* ❌ APAGAMOS a propriedade 'animation' aqui para não bugar quando o rato sair! */
+    /* ✅ Usamos apenas o 'transform' que já faz a mágica acontecer suavemente */
+    
+    transform: scale(1.15) translateY(-5px);
+    box-shadow: 0 15px 30px rgba(220, 20, 60, 0.6);
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255, 69, 0, 0.9);
+
+    /* O ícone cresce e ilumina-se ao passar o rato */
+    .icone-sigilo {
+      transform: scale(1.3) rotate(15deg);
+      filter: drop-shadow(0 0 5px rgba(255, 69, 0, 0.8));
+    }
+
+    /* A espiral roda com a transição */
+    .espiral {
+      transform: scale(1.3) rotate(90deg);
+    }
+  }
+
+  /* Efeitos ao clicar (Active) */
+  &:active {
+    transform: scale(0.9) translateY(2px);
+    box-shadow: 0 2px 10px rgba(139, 0, 0, 0.5);
+    filter: brightness(0.7);
+  }
+}
