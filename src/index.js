@@ -8,6 +8,7 @@ import Input from './pages/input/input.jsx'
 import Calculadora from './pages/calculadora/calculadora.jsx'
 import Cep from './pages/chamadoapi/cep/cep.jsx'
 import Ingresso from './pages/ingessos/ingresso.jsx'
+import Acai from './pages/acai/acai.jsx'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -24,6 +25,7 @@ root.render(
           <Route  path='/calculadora' element= {<Calculadora/>}/>
           <Route  path='/buscacep' element= {<Cep/>}/>
            <Route  path='/ingresso' element= {<Ingresso/>}/>
+            <Route  path='/açai' element= {<Acai/>}/>
       </Routes>
     </BrowserRouter>
   

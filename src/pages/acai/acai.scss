@@ -1,0 +1,241 @@
+/* =========================================================
+   AÇAÍ IMPERIAL - ESTILO OURO & LUXO (GOLD EDITION)
+   ========================================================= */
+
+/* Animação de Brilho Metálico do Ouro */
+@keyframes reluzirOuro {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes auraDourada {
+  0% { 
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.25), inset 0 0 15px rgba(0, 0, 0, 0.9); 
+    border-color: rgba(212, 175, 55, 0.5);
+  }
+  50% { 
+    box-shadow: 0 0 45px rgba(255, 215, 0, 0.5), inset 0 0 25px rgba(212, 175, 55, 0.3); 
+    border-color: rgba(255, 223, 0, 0.9);
+  }
+  100% { 
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.25), inset 0 0 15px rgba(0, 0, 0, 0.9); 
+    border-color: rgba(212, 175, 55, 0.5);
+  }
+}
+
+@keyframes elevaçãoSuave {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.acai-corpo {
+  background: radial-gradient(circle at center, #1a1610 0%, #080705 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 20px;
+  gap: 35px;
+  box-sizing: border-box;
+  color: #f3e5ab;
+  font-family: 'Cinzel', 'Playfair Display', 'Georgia', serif;
+}
+
+.acai {
+  width: 100%;
+  max-width: 950px;
+  background: linear-gradient(145deg, #14120e, #0c0b08, #181510);
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  border-radius: 24px;
+  padding: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+  animation: auraDourada 6s ease-in-out infinite;
+  backdrop-filter: blur(10px);
+
+  .titulo {
+    p {
+      font-size: 32px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      margin: 0;
+      background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: reluzirOuro 4s linear infinite;
+      filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3));
+    }
+  }
+
+  /* Cards dos Copos */
+  .acais {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+
+    .copo {
+      background: linear-gradient(160deg, rgba(30, 26, 18, 0.9), rgba(12, 11, 8, 0.95));
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 18px;
+      padding: 25px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 230px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+      &:hover {
+        transform: translateY(-8px);
+        border-color: #ffd700;
+        box-shadow: 0 15px 35px rgba(212, 175, 55, 0.35);
+        background: linear-gradient(160deg, rgba(45, 38, 25, 0.95), rgba(18, 15, 10, 0.98));
+
+        .img-acai {
+          transform: scale(1.1);
+          filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+        }
+
+        .inputum {
+          border-color: #ffd700;
+          box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+        }
+      }
+
+      .img-acai {
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+        transition: all 0.4s ease;
+        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.8));
+        animation: elevaçãoSuave 5s ease-in-out infinite;
+      }
+
+      .inputum {
+        width: 80%;
+        padding: 10px;
+        background: #0a0907;
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        border-radius: 10px;
+        color: #fff8e7;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        outline: none;
+        transition: all 0.3s ease;
+
+        &:focus {
+          border-color: #ffd700;
+          box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+          background: #14110b;
+        }
+      }
+
+      p {
+        font-size: 20px;
+        font-weight: 800;
+        margin: 0;
+        color: #d4af37;
+        text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+      }
+    }
+  }
+
+  /* Campo de Cupom */
+  .div-cupom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 360px;
+
+    p {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #c5a059;
+      margin: 0;
+    }
+
+    .cupom {
+      width: 100%;
+      padding: 12px 20px;
+      background: #0a0907;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 12px;
+      color: #ffd700;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: 2px;
+      outline: none;
+      transition: all 0.3s ease;
+
+      &:focus {
+        border-color: #ffd700;
+        box-shadow: 0 0 18px rgba(212, 175, 55, 0.5);
+        background: #120f0a;
+      }
+    }
+  }
+
+  /* Botão Dourado Premium */
+  .mostrar {
+    padding: 16px 55px;
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #0d0b07;
+    background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    background-size: 200% auto;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(191, 149, 63, 0.35);
+    animation: reluzirOuro 4s linear infinite;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6);
+      filter: brightness(1.1);
+    }
+
+    &:active {
+      transform: scale(0.96) translateY(1px);
+      box-shadow: 0 3px 10px rgba(191, 149, 63, 0.4);
+    }
+  }
+
+  /* Display Valor Final */
+  .valorfinal {
+    margin-top: 10px;
+    padding: 18px 45px;
+    background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.15) 0%, rgba(10, 9, 7, 0.8) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.6);
+    border-radius: 16px;
+    box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.2);
+
+    p {
+      font-size: 24px;
+      font-weight: 800;
+      margin: 0;
+      background: linear-gradient(90deg, #ffffff, #ffe8a3, #d4af37);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+    }
+  }
+}

@@ -38,6 +38,11 @@ function Links() {
         <img src="/assets/img/image copy 3.png" alt="Ingresso" className="icone-sigilo" />
         ir para buscar ingresso
       </Link>
+
+       <Link to={'../açai'} className='btn-link'>
+        <img src="/assets/img/image copy 4.png" alt="Cadastro" className="icone-sigilo" />
+        ir para Açai
+      </Link>
     </div>
   );
 }
