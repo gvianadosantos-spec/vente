@@ -1,21 +1,81 @@
-.cadastro{
+// VENTE • Cadastro: templo violeta
+@keyframes cadRise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.cadastro {
+  --accent: #ae7bff;
+  min-height: 100vh;
+  padding: clamp(20px, 4vw, 46px) 16px 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  color: #f7edff;
+  background: radial-gradient(circle at 18% 16%, rgba(127,65,218,.3), transparent 36%), radial-gradient(circle at 90% 80%, rgba(208,58,133,.15), transparent 33%), #090913;
+
+  .corpo {
+    width: min(940px, 100%);
+    padding: clamp(24px, 4vw, 48px);
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid rgba(188,141,255,.3);
+    border-radius: 30px;
+    background: linear-gradient(160deg, rgba(48,31,75,.9), rgba(14,13,28,.96));
+    box-shadow: 0 26px 65px rgba(0,0,0,.44), inset 0 1px rgba(255,255,255,.1);
+    animation: cadRise .65s both;
+    > h1 {
+      margin: 0 0 17px;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      background: linear-gradient(100deg, #fff, #cfafff, #ef92c6);
+      background-clip: text;
+      color: transparent;
+      text-align: center;
+    }
+    > p { width: min(490px,100%); margin: 10px 0 0; color: #d2b7ef; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    > input:not([type='radio']), > select {
+      width: min(490px, 100%);
+      min-height: 54px;
+      padding: 13px 16px;
+      border: 1px solid rgba(203,168,255,.3);
+      border-radius: 14px;
+      background: #141022;
+      color: #fff;
+      outline: none;
+      transition: border-color .25s, box-shadow .25s, transform .25s;
+      &::placeholder { color: #9f8bb7; }
+      &:focus { transform: translateY(-2px); border-color: #bc91ff; box-shadow: 0 0 0 4px rgba(174,123,255,.15); }
+    }
+    > select { cursor: pointer; color-scheme: dark; }
+    > label {
+      width: min(490px,100%);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 49px;
+      padding: 10px 16px;
+      border: 1px solid rgba(211,179,252,.14);
+      border-radius: 12px;
+      background: rgba(255,255,255,.035);
+      color: #ebe2f7;
+      font-weight: 650;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+      &:hover { border-color: rgba(174,123,255,.6); background: rgba(174,123,255,.11); }
+      input[type='radio'] { width: 20px; height: 20px; accent-color: #ba8cff; cursor: pointer; }
+      &:has(input:checked) { border-color: #ba8cff; background: rgba(174,123,255,.16); }
+    }
+    // Links está dentro de .corpo no JSX original.
+    > .botoes-container {
+      margin-top: 30px;
+      padding-top: 26px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+  }
 }
-
-.corpo{
-   background-color: crimson;
-
-   height: 600px;
-   width: 350px;
-
-   border-radius: 25px;
-
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-
-
+@media (max-width: 500px) {
+  .cadastro .corpo { border-radius: 20px; padding: 25px 16px; > .botoes-container { gap: 8px; } }
 }

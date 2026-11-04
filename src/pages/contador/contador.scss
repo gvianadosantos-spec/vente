@@ -1,22 +1,86 @@
+// VENTE • Contador: painel energético
+@keyframes countEnter { from { opacity: 0; transform: scale(.95) translateY(15px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+@keyframes countBreathe { 0%,100% { text-shadow: 0 0 16px rgba(251,146,60,.2); } 50% { text-shadow: 0 0 35px rgba(251,146,60,.6); } }
 .Contador {
-  text-align: center;
-}
-
-.Titulo{
+  --accent: #fb923c;
+  min-height: 100vh;
+  padding: clamp(20px, 4vw, 48px) 16px 70px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  gap: 25px;
+  text-align: center;
+  color: #fff1e4;
+  background: radial-gradient(circle at 50% 5%, rgba(207,94,31,.23), transparent 35%), radial-gradient(circle at 12% 84%, rgba(138,52,46,.18), transparent 37%), #110e13;
+  .Titulo {
+    margin: 12px 0 0;
+    font-size: clamp(2rem, 5.3vw, 3.5rem);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    font-weight: 900;
+    background: linear-gradient(100deg, #ffcf94, #ff883e, #ffe6bf);
+    background-clip: text;
+    color: transparent;
+  }
+  .Tudo {
+    width: min(835px, 100%);
+    padding: clamp(18px, 3vw, 27px);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(150deg, rgba(66,38,30,.8), rgba(19,18,25,.94));
+    border: 1px solid rgba(251,146,60,.3);
+    border-radius: 24px;
+    box-shadow: 0 22px 48px rgba(0,0,0,.35), inset 0 1px rgba(255,255,255,.08);
+    animation: countEnter .6s both;
+  }
+  .num {
+    order: -1;
+    width: 100%;
+    margin: 0 0 9px;
+    padding: clamp(18px, 4vw, 34px) 12px;
+    overflow-wrap: anywhere;
+    border: 1px solid rgba(255,166,78,.26);
+    border-radius: 19px;
+    background: radial-gradient(ellipse at center, rgba(251,146,60,.16), rgba(12,11,15,.6));
+    color: #fff6e9;
+    font-size: clamp(2.9rem, 8vw, 5.4rem);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    font-weight: 900;
+    animation: countBreathe 3.5s ease-in-out infinite;
+  }
+  .botao {
+    flex: 1 1 100px;
+    min-width: 75px;
+    max-width: 160px;
+    min-height: 58px;
+    padding: 11px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,177,105,.35);
+    background: linear-gradient(155deg, #6f3824, #37201f);
+    color: #fff5eb;
+    font-size: 1rem;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: inset 0 1px rgba(255,255,255,.09);
+    transition: transform .2s, box-shadow .2s, border-color .2s, filter .2s;
+    &:hover { transform: translateY(-5px); border-color: #ffb875; box-shadow: 0 12px 25px rgba(251,146,60,.22); filter: brightness(1.18); }
+    &:active { transform: scale(.96); }
+  }
+  > .botao {
+    flex: none;
+    width: min(250px, 100%);
+    max-width: none;
+    min-height: 60px;
+    background: linear-gradient(105deg, #f97316, #c2410c);
+    border-color: #fdba74;
+    box-shadow: 0 10px 30px rgba(234,88,12,.26);
+    letter-spacing: .14em;
+  }
 }
-
-.Tudo{
-  display: flex;
-  justify-content: space-around;
-  gap: 10px;
-}
-
-.botao{
-  background-color: brown;
-  width: 75px;
-  height: 50px;
-  border-radius: 16px;
+@media (max-width: 600px) {
+  .Contador { gap: 18px; .Tudo { gap: 8px; padding: 16px 10px; border-radius: 19px; } .botao { flex-basis: 65px; min-width: 62px; min-height: 52px; } }
 }

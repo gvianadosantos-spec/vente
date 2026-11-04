@@ -1,99 +1,114 @@
-/* Animação que faz o fogo/sangue deslizar pelo cabeçalho */
-@keyframes magiaGoticaCabecalho {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+// VENTE • Identidade global e cabeçalho arcano
+:root {
+  color-scheme: dark;
+  font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Animação pulsante para dar "vida" ao componente */
-@keyframes pulsoMaldito {
-  0% { box-shadow: 0 0 15px rgba(139, 0, 0, 0.5); }
-  50% { box-shadow: 0 0 35px rgba(255, 69, 0, 0.8); }
-  100% { box-shadow: 0 0 15px rgba(139, 0, 0, 0.5); }
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; background: #070811; }
+button, input, select { font: inherit; }
+button, a, select { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 3px solid #fbbf24;
+  outline-offset: 4px;
 }
 
-/* Rotação lenta e sinistra para o sigilo da direita */
-@keyframes rotacaoSombria {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes venteHalo {
+  0%, 100% { opacity: .5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.07); }
 }
+@keyframes venteSpin { to { transform: rotate(360deg); } }
+@keyframes venteEnter { from { opacity: 0; transform: translateY(-22px); } to { opacity: 1; transform: translateY(0); } }
 
 .comp-cabecalho {
-  width: 1000px;
-  max-width: 90vw; /* Garante que não quebre em telas menores */
-  padding: 15px 40px;
-  border: 2px solid #8B0000; /* Borda cor de sangue coagulado */
-  border-radius: 32px;
-  
-  display: flex;
+  --header-accent: var(--accent, #fb4b67);
+  position: relative;
+  z-index: 3;
+  isolation: isolate;
+  width: min(1080px, 100%);
+  min-height: 106px;
+  padding: 18px clamp(15px, 3vw, 36px);
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) 64px;
   align-items: center;
-  justify-content: center;
-  gap: 40px; /* Dá espaço entre os sigilos e o texto central */
+  justify-items: center;
+  gap: clamp(10px, 3vw, 30px);
+  border: 1px solid color-mix(in srgb, var(--header-accent), transparent 42%);
+  border-radius: 28px;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.08), transparent 40%),
+    radial-gradient(ellipse at 50% -110%, color-mix(in srgb, var(--header-accent), transparent 38%), transparent 74%),
+    #0f0c19;
+  box-shadow: 0 28px 60px rgba(0,0,0,.36), inset 0 1px rgba(255,255,255,.12);
+  backdrop-filter: blur(16px);
+  animation: venteEnter .7s both;
 
-  /* O gradiente gótico animado que criamos na última conversa */
-  background: linear-gradient(
-    90deg, 
-    #120505, 
-    #8B0000, 
-    #DC143C, 
-    #FF4500, 
-    #DC143C, 
-    #8B0000, 
-    #120505
-  );
-  background-size: 200% auto;
-  
-  /* Combina o fundo em movimento com a sombra pulsante */
-  animation: 
-    magiaGoticaCabecalho 6s linear infinite,
-    pulsoMaldito 4s ease-in-out infinite;
-
-  transition: all 0.4s ease;
-
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 24px;
+    pointer-events: none;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 15%; right: 15%; bottom: -48px;
+    height: 60px;
+    background: var(--header-accent);
+    filter: blur(48px);
+    opacity: .4;
+    animation: venteHalo 5s ease-in-out infinite;
+    z-index: -1;
+  }
   h1 {
-    color: #ffffff;
-    font-size: 28px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 4px;
     margin: 0;
-    text-shadow: 0 0 12px rgba(255, 69, 0, 0.9); /* Brilho de fogo no texto */
+    max-width: 100%;
+    text-align: center;
+    overflow-wrap: anywhere;
+    color: #fff4f6;
+    font-size: clamp(1.3rem, 3.3vw, 2.6rem);
+    font-weight: 900;
+    line-height: 1.12;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    text-shadow: 0 0 26px color-mix(in srgb, var(--header-accent), transparent 38%);
   }
-
-  /* Estilos para os sigilos mágicos acompanharem a estética */
   .icone-sigilo {
-    width: 45px;
-    height: 45px;
+    width: clamp(36px, 5vw, 58px);
+    height: clamp(36px, 5vw, 58px);
     object-fit: contain;
-    
-    /* MÁGICA: Remove o fundo preto das imagens */
-    mix-blend-mode: screen; 
-    filter: drop-shadow(0 0 5px rgba(255, 69, 0, 0.6));
-    transition: transform 0.4s ease, filter 0.4s ease;
+    mix-blend-mode: screen;
+    filter: drop-shadow(0 0 10px var(--header-accent));
+    transition: filter .35s ease, scale .35s ease;
   }
+  .icone-sigilo.espiral { animation: venteSpin 18s linear infinite; }
+  &:hover .icone-sigilo { scale: 1.1; filter: drop-shadow(0 0 18px var(--header-accent)); }
+  &:hover .espiral { animation-duration: 7s; }
+}
 
-  /* Aplica a rotação contínua ao sigilo em formato de espiral */
-  .espiral {
-    animation: rotacaoSombria 15s linear infinite;
+@media (max-width: 540px) {
+  .comp-cabecalho {
+    min-height: 78px;
+    grid-template-columns: 35px minmax(0,1fr) 35px;
+    border-radius: 20px;
+    padding: 14px 10px;
+    gap: 8px;
+    h1 { letter-spacing: .06em; }
+    .icone-sigilo { width: 32px; height: 32px; }
   }
-
-  /* Interação ao passar o mouse por cima do cabeçalho */
-  &:hover {
-    transform: scale(1.02);
-    border-color: #FF4500;
-    
-    h1 {
-      text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Fica mais brilhante */
-    }
-
-    .icone-sigilo {
-      transform: scale(1.3) rotate(15deg);
-      filter: drop-shadow(0 0 15px rgba(255, 69, 0, 1)); /* Sigilos inflamam */
-    }
-
-    .espiral {
-      /* Acelera a espiral quando o mouse está em cima */
-      animation: rotacaoSombria 3s linear infinite;
-      transform: scale(1.3);
-    }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
   }
 }

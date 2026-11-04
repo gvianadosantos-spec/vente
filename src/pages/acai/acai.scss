@@ -1,241 +1,139 @@
-/* =========================================================
-   AÇAÍ IMPERIAL - ESTILO OURO & LUXO (GOLD EDITION)
-   ========================================================= */
-
-/* Animação de Brilho Metálico do Ouro */
-@keyframes reluzirOuro {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes auraDourada {
-  0% { 
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.25), inset 0 0 15px rgba(0, 0, 0, 0.9); 
-    border-color: rgba(212, 175, 55, 0.5);
-  }
-  50% { 
-    box-shadow: 0 0 45px rgba(255, 215, 0, 0.5), inset 0 0 25px rgba(212, 175, 55, 0.3); 
-    border-color: rgba(255, 223, 0, 0.9);
-  }
-  100% { 
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.25), inset 0 0 15px rgba(0, 0, 0, 0.9); 
-    border-color: rgba(212, 175, 55, 0.5);
-  }
-}
-
-@keyframes elevaçãoSuave {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
-}
-
+// VENTE • Açaí: royal purple & gold
+@keyframes acaiFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+@keyframes acaiIn { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes acaiLight { 0%,100% { box-shadow: 0 25px 70px rgba(0,0,0,.45), 0 0 25px rgba(232,190,98,.08); } 50% { box-shadow: 0 25px 70px rgba(0,0,0,.45), 0 0 46px rgba(232,190,98,.22); } }
 .acai-corpo {
-  background: radial-gradient(circle at center, #1a1610 0%, #080705 100%);
+  --accent: #e9bc69;
   min-height: 100vh;
+  padding: clamp(20px, 4vw, 46px) 16px 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding: 40px 20px;
-  gap: 35px;
-  box-sizing: border-box;
-  color: #f3e5ab;
-  font-family: 'Cinzel', 'Playfair Display', 'Georgia', serif;
-}
-
-.acai {
-  width: 100%;
-  max-width: 950px;
-  background: linear-gradient(145deg, #14120e, #0c0b08, #181510);
-  border: 1px solid rgba(212, 175, 55, 0.6);
-  border-radius: 24px;
-  padding: 45px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 35px;
-  animation: auraDourada 6s ease-in-out infinite;
-  backdrop-filter: blur(10px);
-
-  .titulo {
-    p {
-      font-size: 32px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 5px;
-      margin: 0;
-      background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: reluzirOuro 4s linear infinite;
-      filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3));
-    }
-  }
-
-  /* Cards dos Copos */
-  .acais {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    width: 100%;
-
-    .copo {
-      background: linear-gradient(160deg, rgba(30, 26, 18, 0.9), rgba(12, 11, 8, 0.95));
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      border-radius: 18px;
-      padding: 25px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      width: 230px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
-      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-
-      &:hover {
-        transform: translateY(-8px);
-        border-color: #ffd700;
-        box-shadow: 0 15px 35px rgba(212, 175, 55, 0.35);
-        background: linear-gradient(160deg, rgba(45, 38, 25, 0.95), rgba(18, 15, 10, 0.98));
-
-        .img-acai {
-          transform: scale(1.1);
-          filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
-        }
-
-        .inputum {
-          border-color: #ffd700;
-          box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
-        }
-      }
-
-      .img-acai {
-        width: 120px;
-        height: 120px;
-        object-fit: contain;
-        transition: all 0.4s ease;
-        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.8));
-        animation: elevaçãoSuave 5s ease-in-out infinite;
-      }
-
-      .inputum {
-        width: 80%;
-        padding: 10px;
-        background: #0a0907;
-        border: 1px solid rgba(212, 175, 55, 0.4);
-        border-radius: 10px;
-        color: #fff8e7;
-        font-size: 18px;
-        font-weight: 700;
-        text-align: center;
-        outline: none;
-        transition: all 0.3s ease;
-
-        &:focus {
-          border-color: #ffd700;
-          box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-          background: #14110b;
-        }
-      }
-
-      p {
-        font-size: 20px;
-        font-weight: 800;
-        margin: 0;
-        color: #d4af37;
-        text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
-      }
-    }
-  }
-
-  /* Campo de Cupom */
-  .div-cupom {
+  gap: 34px;
+  color: #fff4df;
+  background: radial-gradient(circle at 48% 3%, rgba(132,52,139,.27), transparent 40%), radial-gradient(circle at 98% 67%, rgba(210,153,63,.14), transparent 34%), #110b17;
+  .acai {
+    width: min(1100px,100%);
+    padding: clamp(20px, 4vw, 44px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    width: 100%;
-    max-width: 360px;
-
-    p {
-      font-size: 14px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      color: #c5a059;
-      margin: 0;
-    }
-
-    .cupom {
+    gap: 28px;
+    border: 1px solid rgba(237,186,101,.35);
+    border-radius: 30px;
+    background: linear-gradient(155deg, #25142d, #120f1c 75%);
+    animation: acaiIn .65s both, acaiLight 6s 1s ease-in-out infinite;
+    .titulo {
       width: 100%;
-      padding: 12px 20px;
-      background: #0a0907;
-      border: 1px solid rgba(212, 175, 55, 0.4);
-      border-radius: 12px;
-      color: #ffd700;
-      font-size: 16px;
-      font-weight: 600;
       text-align: center;
-      letter-spacing: 2px;
-      outline: none;
-      transition: all 0.3s ease;
-
-      &:focus {
-        border-color: #ffd700;
-        box-shadow: 0 0 18px rgba(212, 175, 55, 0.5);
-        background: #120f0a;
+      p {
+        margin: 0;
+        font-size: clamp(1.7rem, 5vw, 3.2rem);
+        font-weight: 950;
+        text-transform: uppercase;
+        letter-spacing: .12em;
+        line-height: 1.2;
+        background: linear-gradient(115deg, #b88743, #fff3cb 35%, #f6c76b 65%, #bf8449);
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 9px 42px rgba(220,167,89,.12);
       }
     }
-  }
-
-  /* Botão Dourado Premium */
-  .mostrar {
-    padding: 16px 55px;
-    font-size: 16px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #0d0b07;
-    background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-    background-size: 200% auto;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    box-shadow: 0 6px 20px rgba(191, 149, 63, 0.35);
-    animation: reluzirOuro 4s linear infinite;
-    transition: all 0.3s ease;
-
-    &:hover {
-      transform: scale(1.05) translateY(-2px);
-      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6);
-      filter: brightness(1.1);
+    .acais {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: clamp(12px, 2.5vw, 25px);
+      .copo {
+        min-width: 0;
+        padding: 25px 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        border: 1px solid rgba(236,196,127,.27);
+        border-radius: 23px;
+        background: radial-gradient(circle at 50% 0, rgba(159,84,156,.18), transparent 65%), linear-gradient(145deg, #311b35, #190f25);
+        box-shadow: 0 18px 40px rgba(0,0,0,.2);
+        transition: transform .3s, border-color .3s, box-shadow .3s;
+        &:hover { transform: translateY(-9px); border-color: #f5c875; box-shadow: 0 21px 46px rgba(227,173,93,.16); }
+        .img-acai {
+          width: min(180px, 100%);
+          height: 190px;
+          object-fit: contain;
+          filter: drop-shadow(0 16px 18px rgba(0,0,0,.4));
+          animation: acaiFloat 5s ease-in-out infinite;
+        }
+        &:nth-child(2) .img-acai { animation-delay: .7s; }
+        &:nth-child(3) .img-acai { animation-delay: 1.4s; }
+        .inputum {
+          width: min(145px,100%);
+          min-height: 49px;
+          padding: 10px;
+          border: 1px solid rgba(241,200,129,.43);
+          border-radius: 13px;
+          background: #160f1c;
+          color: #fff4db;
+          font-weight: 850;
+          font-size: 1.2rem;
+          text-align: center;
+          outline: none;
+          &:focus { border-color: #ffde9c; box-shadow: 0 0 0 4px rgba(233,188,105,.14); }
+        }
+        p { order: -1; margin: 0; font-weight: 900; font-size: 1.5rem; color: #f5d393; letter-spacing: .03em; }
+      }
     }
-
-    &:active {
-      transform: scale(0.96) translateY(1px);
-      box-shadow: 0 3px 10px rgba(191, 149, 63, 0.4);
+    .div-cupom {
+      width: min(440px,100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      p { margin: 0; font-size: .87rem; font-weight: 850; letter-spacing: .15em; text-transform: uppercase; color: #efd09c; }
+      .cupom {
+        width: 100%;
+        min-height: 58px;
+        padding: 15px 18px;
+        border: 1px solid rgba(247,204,125,.38);
+        border-radius: 15px;
+        background: #160f1d;
+        color: #fff1d3;
+        font-size: 1.1rem;
+        font-weight: 800;
+        text-align: center;
+        outline: none;
+        &:focus { border-color: #ffda86; box-shadow: 0 0 0 4px rgba(233,188,105,.16); }
+      }
     }
-  }
-
-  /* Display Valor Final */
-  .valorfinal {
-    margin-top: 10px;
-    padding: 18px 45px;
-    background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.15) 0%, rgba(10, 9, 7, 0.8) 100%);
-    border: 1px solid rgba(212, 175, 55, 0.6);
-    border-radius: 16px;
-    box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.2);
-
-    p {
-      font-size: 24px;
-      font-weight: 800;
-      margin: 0;
-      background: linear-gradient(90deg, #ffffff, #ffe8a3, #d4af37);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+    .mostrar {
+      width: min(440px,100%);
+      min-height: 62px;
+      padding: 15px 24px;
+      border: none;
+      border-radius: 15px;
+      color: #271226;
+      background: linear-gradient(105deg, #c38b45, #ffe9a7 48%, #e7b76a);
+      font-weight: 950;
+      font-size: 1.04rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 13px 28px rgba(228,171,81,.2);
+      transition: transform .25s, filter .25s, box-shadow .25s;
+      &:hover { transform: translateY(-4px); filter: brightness(1.1); box-shadow: 0 18px 36px rgba(228,171,81,.35); }
+      &:active { transform: scale(.98); }
+    }
+    .valorfinal {
+      width: min(560px,100%);
+      padding: 23px;
+      border: 1px solid rgba(255,214,137,.48);
+      border-radius: 18px;
+      background: linear-gradient(130deg, rgba(241,192,106,.14), rgba(148,73,112,.13));
+      text-align: center;
+      box-shadow: inset 0 1px rgba(255,255,255,.08);
+      p { margin: 0; overflow-wrap: anywhere; color: #ffe2aa; font-size: clamp(1.25rem,3vw,1.9rem); font-weight: 950; }
     }
   }
 }
+@media (max-width: 800px) { .acai-corpo .acai .acais { grid-template-columns: repeat(2,minmax(0,1fr)); .copo:last-child { grid-column: 1/-1; width: min(350px,100%); justify-self: center; } } }
+@media (max-width: 500px) { .acai-corpo .acai { border-radius: 21px; .acais { grid-template-columns: 1fr; .copo, .copo:last-child { width: 100%; grid-column: auto; } .copo .img-acai { height: 150px; } } } }

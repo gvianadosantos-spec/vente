@@ -1,38 +1,102 @@
-.corpo-cep{
+// VENTE • CEP: radar esmeralda
+@keyframes cepScan { 0% { transform: translateY(-140px); opacity: 0; } 30%,70% { opacity: .65; } 100% { transform: translateY(350px); opacity: 0; } }
+@keyframes cepIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+.corpo-cep {
+  --accent: #34d399;
+  min-height: 100vh;
+  padding: clamp(20px, 4vw, 46px) 16px 70px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  padding: 10px;
-  gap: 10px;
+  gap: 32px;
+  color: #e9fff7;
+  background: radial-gradient(circle at 80% 18%, rgba(28,163,120,.2), transparent 38%), radial-gradient(circle at 20% 88%, rgba(10,96,118,.22), transparent 31%), #071412;
+
+  .cep {
+    position: relative;
+    width: min(640px, 100%);
+    padding: clamp(27px, 5vw, 50px);
+    display: flex;
     flex-direction: column;
-}
-
-.cep{
- 
-    background-color: rgb(222, 184, 135);
-   height: 400px;
-   width: 350px;
-
-   border-radius: 25px;
-   gap: 32px;
-
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-
-
-    .p{
-        height: 75px;
-        width: 200px;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        border-radius: 30px;
-
-        background-color: rgba(224, 138, 25, 0.8);
+    align-items: center;
+    gap: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(67,230,168,.38);
+    border-radius: 30px;
+    background: linear-gradient(150deg, #153329, #091b1c 82%);
+    box-shadow: 0 24px 60px rgba(0,0,0,.37), inset 0 1px rgba(255,255,255,.11);
+    animation: cepIn .65s both;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      z-index: 0;
+      background: linear-gradient(90deg, transparent, #5fffd0, transparent);
+      box-shadow: 0 0 22px #34d399;
+      pointer-events: none;
+      animation: cepScan 5s linear infinite;
     }
-
-
+    > * { position: relative; z-index: 1; }
+    .p:first-child {
+      margin: 0;
+      color: #9fffe0;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 900;
+      text-align: center;
+    }
+    input[type='text'] {
+      width: min(430px, 100%);
+      min-height: 66px;
+      padding: 15px 20px;
+      text-align: center;
+      font-size: clamp(1.15rem, 3vw, 1.6rem);
+      font-weight: 800;
+      letter-spacing: .18em;
+      color: #fff;
+      background: #071917;
+      border: 1px solid rgba(52,211,153,.45);
+      border-radius: 15px;
+      outline: none;
+      &::placeholder { color: #779b8e; }
+      &:focus { border-color: #5bf3bf; box-shadow: 0 0 0 4px rgba(52,211,153,.16), 0 0 24px rgba(52,211,153,.13); }
+    }
+    button {
+      width: min(430px,100%);
+      min-height: 57px;
+      border: none;
+      border-radius: 15px;
+      background: linear-gradient(110deg, #34d399, #0d9477);
+      color: #041c16;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(16,185,129,.2);
+      transition: transform .22s, filter .22s, box-shadow .22s;
+      &:hover { transform: translateY(-4px); filter: brightness(1.16); box-shadow: 0 17px 38px rgba(16,185,129,.33); }
+      &:active { transform: scale(.98); }
+    }
+    .p:nth-of-type(2) {
+      width: 100%;
+      min-height: 95px;
+      margin: 0;
+      padding: 24px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      overflow-wrap: anywhere;
+      line-height: 1.6;
+      color: #d1fae5;
+      border: 1px dashed rgba(78,230,176,.35);
+      border-radius: 16px;
+      background: rgba(8,27,24,.66);
+    }
+    > p:not(.p) { margin: 0; color: #a5d9c6; letter-spacing: .06em; text-align: center; }
+    input[type='color'] { width: 90px; height: 55px; padding: 5px; border: 1px solid #4ec6a2; border-radius: 13px; cursor: pointer; background: rgba(255,255,255,.06); }
+  }
 }
+@media (max-width: 500px) { .corpo-cep .cep { border-radius: 20px; gap: 18px; } }

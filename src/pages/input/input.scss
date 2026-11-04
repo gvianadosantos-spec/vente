@@ -1,10 +1,158 @@
-.input{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-     flex-direction: column;
-}
+// VENTE • Input: laboratório de luz holográfica
+@keyframes inputHue { 0%,100% { filter: hue-rotate(0deg); } 50% { filter: hue-rotate(18deg); } }
+@keyframes inputIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.input {
+  --accent: #22d3ee;
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  padding: clamp(20px, 4vw, 50px) 16px 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  color: #ebfaff;
+  background-color: #0a101b;
+  background-image: radial-gradient(ellipse at 14% 8%, rgba(34,211,238,.18), transparent 33%), radial-gradient(ellipse at 87% 52%, rgba(147,51,234,.24), transparent 38%), linear-gradient(160deg, #080d18, #111021 70%, #08111b);
 
-.aparecer{
-    font-size: 20px;
+  // Overlay preserva a leitura mesmo quando o input muda a cor de fundo.
+  &::before { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(4,8,19,.34); pointer-events: none; }
+  > * { max-width: min(890px,100%); }
+  .titulo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 29px;
+    > h1 {
+      margin: 0;
+      text-align: center;
+      font-size: clamp(1.4rem, 3.5vw, 2.6rem);
+      line-height: 1.3;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      background: linear-gradient(110deg, #bdfdff, #bf9cff, #fff);
+      background-clip: text;
+      color: transparent;
+    }
+  }
+  .escrever, .aparecer {
+    width: min(680px,100%);
+    padding: 20px;
+    border: 1px solid rgba(34,211,238,.32);
+    border-radius: 22px;
+    background: rgba(15,25,39,.85);
+    box-shadow: 0 16px 40px rgba(0,0,0,.22), inset 0 1px rgba(255,255,255,.08);
+    animation: inputIn .55s both;
+  }
+  .escrever input, > input:not([type='color']) {
+    width: 100%;
+    min-height: 59px;
+    padding: 14px 18px;
+    border: 1px solid rgba(79,209,233,.35);
+    border-radius: 14px;
+    background: #080f1b;
+    color: #f5fdff;
+    outline: none;
+    font-size: 1.04rem;
+    &::placeholder { color: #7f9db5; }
+    &:focus { border-color: #67e8f9; box-shadow: 0 0 0 4px rgba(34,211,238,.14); }
+  }
+  .aparecer {
+    min-height: 80px;
+    display: grid;
+    place-items: center;
+    padding: 17px 24px;
+    border-color: rgba(192,132,252,.38);
+    background: linear-gradient(125deg, rgba(46,28,80,.8), rgba(13,27,39,.9));
+    p { margin: 0; font-weight: 800; color: #e9d5ff; overflow-wrap: anywhere; text-align: center; font-size: clamp(1.1rem,3vw,1.6rem); }
+  }
+  > p {
+    width: min(680px,100%);
+    margin: 14px 0 0;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255,255,255,.14);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .19em;
+    font-size: .86rem;
+    font-weight: 900;
+    color: #83eaf9;
+    overflow-wrap: anywhere;
+  }
+  > h1 {
+    width: min(680px,100%);
+    margin: 0;
+    font-size: clamp(1.25rem, 3.4vw, 2.15rem);
+    text-align: center;
+    line-height: 1.3;
+    color: #f0eaff;
+  }
+  > input:not([type='color']) {
+    width: min(680px,100%);
+    border-radius: 17px;
+  }
+  > p:has(+ .botao) {
+    width: min(680px,100%);
+    margin: 0;
+    min-height: 68px;
+    padding: 19px;
+    border: 1px solid rgba(192,132,252,.3);
+    border-radius: 17px;
+    background: rgba(27,20,54,.85);
+    font-size: 1.25rem;
+    letter-spacing: .02em;
+    text-transform: none;
+    color: #e9d5ff;
+  }
+  > .botao {
+    min-height: 58px;
+    min-width: min(290px,100%);
+    padding: 14px 28px;
+    border: 0;
+    border-radius: 15px;
+    background: linear-gradient(110deg, #06b6d4, #8b5cf6);
+    color: #fff;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    cursor: pointer;
+    box-shadow: 0 12px 28px rgba(60,99,220,.26);
+    transition: transform .25s, box-shadow .25s;
+    &:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(74,102,239,.4); }
+    &:active { transform: scale(.98); }
+  }
+  // Div usada pelo componente Wheel, seguida da div com input de cor e Links.
+  > div:nth-last-of-type(2) {
+    width: min(480px,100%);
+    min-height: 290px;
+    padding: 30px 16px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,.19);
+    border-radius: 28px;
+    box-shadow: 0 22px 50px rgba(0,0,0,.3);
+    transition: background-color .3s;
+    > * { max-width: 100%; }
+  }
+  > div:last-child {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    > input[type='color'] {
+      width: 120px;
+      height: 66px;
+      padding: 7px;
+      border: 1px solid #67e8f9;
+      border-radius: 17px;
+      background: #111b2b;
+      cursor: pointer;
+    }
+    > .botoes-container { width: 100%; }
+  }
+}
+@media (max-width: 530px) {
+  .input { gap: 18px; .escrever, .aparecer { border-radius: 17px; } > div:nth-last-of-type(2) { padding: 25px 8px; } }
 }

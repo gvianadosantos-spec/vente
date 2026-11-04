@@ -1,187 +1,123 @@
-/* --- KEYFRAMES DE ANIMAÇÕES --- */
-@keyframes bgMagiaObscura {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+// VENTE • Página inicial: portal rubro
+@keyframes appNebula { 0%,100% { background-position: 0 0; } 50% { background-position: 100% 100%; } }
+@keyframes appOrbFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-11px); } }
+@keyframes appOrbTurn { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes appReveal { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
 
-@keyframes flutuacaoMaldita {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-@keyframes pulsoOrbe {
-  0% { box-shadow: 0 0 15px rgba(139, 0, 0, 0.7); transform: scale(1); }
-  50% { box-shadow: 0 0 35px rgba(255, 69, 0, 1); transform: scale(1.05); }
-  100% { box-shadow: 0 0 15px rgba(139, 0, 0, 0.7); transform: scale(1); }
-}
-
-@keyframes rotacaoAcelerada {
-  from { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-  to { transform: translate(-50%, -50%) rotate(360deg) scale(1.2); }
-}
-
-@keyframes textGlow {
-  0%, 100% { text-shadow: 0 0 8px rgba(255, 0, 0, 0.6); }
-  50% { text-shadow: 0 0 18px rgba(255, 69, 0, 1); color: #fff; }
-}
-
-/* --- ESTILOS PRINCIPAIS --- */
 .App {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 50px;
-  min-height: 100vh;
-  
-  /* Fundo escuro com leve gradiente animado */
-  background: linear-gradient(135deg, #070101, #2b0000, #0a0000, #1a0000);
-  background-size: 400% 400%;
-  animation: bgMagiaObscura 12s ease infinite;
-  
-  padding: 40px 20px;
-  color: #ffffff;
-  font-family: 'Courier New', Courier, monospace;
-}
-
-/* Container para agrupar o texto e o elemento interativo */
-.sessao-interativa {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  animation: flutuacaoMaldita 5s ease-in-out infinite;
-
-  &.delay-animacao {
-    animation-delay: 1s; /* Faz flutuar fora de sincronia com o de cima */
-  }
-}
-
-.texto-sombrio {
-  font-size: 16px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #ffb3b3;
-  margin: 0;
-  transition: all 0.3s ease;
-
-  &:hover {
-    animation: textGlow 1s ease-in-out infinite;
-  }
-}
-
-/* --- ESTILOS DO INPUT --- */
-.input-container {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  background: rgba(10, 0, 0, 0.8);
-  padding: 10px 25px;
-  border-radius: 50px;
-  border: 1px solid #8b0000;
-  box-shadow: 0 0 15px inset rgba(139, 0, 0, 0.8);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-  /* Quando o usuário clica para digitar */
-  &:focus-within {
-    border-color: #ff4500;
-    box-shadow: 0 0 25px rgba(255, 69, 0, 0.8), 0 0 20px inset rgba(255, 69, 0, 0.5);
-    transform: scale(1.1);
-    
-    .icone-input {
-      filter: drop-shadow(0 0 10px #ff4500);
-      transform: rotate(180deg) scale(1.2);
-    }
-  }
-}
-
-.input-gotico {
-  background: transparent;
-  border: none;
-  outline: none;
-  color: #fff;
-  font-size: 18px;
-  text-align: center;
-  width: 220px;
-  letter-spacing: 2px;
-
-  &::placeholder {
-    color: #660000;
-    font-style: italic;
-  }
-}
-
-.icone-input {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-  mix-blend-mode: screen; /* Mágica para tirar o fundo preto */
-  transition: all 0.6s ease;
-}
-
-/* --- ESTILOS DA ÁGUA (Orbe Mágica) --- */
-.agua {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  
-  width: 130px;
-  height: 130px;
-  border-radius: 50%; /* Transformou o quadrado numa bola */
-  background: radial-gradient(circle, #8b0000 0%, #120505 70%);
-  border: 2px solid #8b0000;
-  
+  --accent: #ff4d71;
   position: relative;
+  isolation: isolate;
+  min-height: 100vh;
   overflow: hidden;
-  cursor: crosshair;
-  
-  animation: pulsoOrbe 3s infinite ease-in-out;
-  transition: all 0.4s ease;
-  
-  span {
-    z-index: 2;
-    color: #fff;
-    font-weight: 900;
-    font-size: 20px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    text-shadow: 0 2px 5px #000;
-    transition: all 0.3s ease;
-  }
+  padding: clamp(20px, 4vw, 55px) 18px 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  color: #ffeaf0;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 14% 15%, rgba(179,24,67,.25), transparent 34%),
+    radial-gradient(ellipse at 88% 65%, rgba(94,27,130,.19), transparent 34%),
+    linear-gradient(150deg, #070810 0%, #180918 54%, #070911 100%);
+  background-size: 140% 140%;
+  animation: appNebula 21s ease-in-out infinite;
 
-  /* A imagem do sigilo espiral dentro da orbe */
-  .espiral-interna {
+  &::before {
+    content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 140px;
-    height: 140px;
-    mix-blend-mode: screen;
-    opacity: 0.3; /* Quase invisível no estado normal */
-    transition: all 0.4s ease;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,.024) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.024) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(to bottom, #000, transparent 85%);
+    pointer-events: none;
   }
+  > * { position: relative; z-index: 1; }
 
-  /* O que acontece quando passa o mouse em cima da água */
-  &:hover {
-    transform: scale(1.15) translateY(-15px) !important;
-    background: radial-gradient(circle, #ff4500 0%, #3a0000 80%);
-    border-color: #ff4500;
-    box-shadow: 0 0 50px rgba(255, 69, 0, 1), 0 0 20px inset #000;
-
+  .sessao-interativa {
+    width: min(710px, 100%);
+    min-height: 205px;
+    padding: clamp(24px, 4vw, 38px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    border: 1px solid rgba(255,129,152,.26);
+    border-radius: 28px;
+    background: linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.018));
+    backdrop-filter: blur(17px);
+    box-shadow: 0 20px 55px rgba(0,0,0,.35), inset 0 1px rgba(255,255,255,.09);
+    animation: appReveal .85s both;
+    &.delay-animacao { animation-delay: .18s; }
+  }
+  .texto-sombrio {
+    margin: 0;
+    color: #ffc3cd;
+    font-size: clamp(.82rem, 2vw, 1rem);
+    font-weight: 800;
+    line-height: 1.55;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+  }
+  .input-container {
+    width: min(500px, 100%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 16px;
+    border: 1px solid rgba(255,98,127,.38);
+    border-radius: 20px;
+    background: rgba(9,5,17,.76);
+    box-shadow: inset 0 0 20px rgba(255,62,103,.04);
+    transition: border-color .25s, box-shadow .25s, transform .25s;
+    &:focus-within {
+      transform: translateY(-3px);
+      border-color: #ff7894;
+      box-shadow: 0 0 0 4px rgba(255,77,113,.12), 0 12px 35px rgba(255,77,113,.14);
+    }
+  }
+  .icone-input { width: 33px; height: 33px; object-fit: contain; mix-blend-mode: screen; filter: drop-shadow(0 0 7px #f43f6b); }
+  .input-gotico {
+    min-width: 0;
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    font-size: clamp(.85rem, 2vw, 1.05rem);
+    text-align: center;
+    &::placeholder { color: #bb91a5; }
+  }
+  .agua {
+    position: relative;
+    isolation: isolate;
+    width: 170px;
+    height: 170px;
+    display: grid;
+    place-items: center;
+    border: 2px solid #fa597b;
+    border-radius: 50%;
+    cursor: crosshair;
+    background: radial-gradient(circle at 35% 28%, #bb456e, #46102f 46%, #100716 75%);
+    box-shadow: 0 0 28px rgba(255,68,122,.28), inset 0 0 28px rgba(0,0,0,.7);
+    animation: appOrbFloat 4s ease-in-out infinite;
+    transition: box-shadow .3s, border-color .3s;
+    &::before { content: ''; position: absolute; inset: -12px; border: 1px dashed rgba(255,147,177,.45); border-radius: 50%; }
     .espiral-interna {
-      opacity: 1; /* Fica totalmente visível */
-      animation: rotacaoAcelerada 1s linear infinite; /* Roda muito rápido */
-      filter: drop-shadow(0 0 5px #ff4500);
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 115px; height: 115px;
+      object-fit: contain;
+      opacity: .44;
+      mix-blend-mode: screen;
+      animation: appOrbTurn 14s linear infinite;
+      transition: opacity .3s;
     }
-
-    span {
-      text-shadow: 0 0 15px #fff, 0 0 30px #ff4500;
-      transform: scale(1.2);
-    }
+    span { position: relative; z-index: 1; font-size: 1.3rem; font-weight: 900; letter-spacing: .15em; text-transform: uppercase; text-shadow: 0 2px 12px #000; }
+    &:hover { border-color: #ffbed0; box-shadow: 0 0 55px rgba(255,68,122,.6), inset 0 0 30px #170411; .espiral-interna { opacity: .9; animation-duration: 3s; } }
   }
 }
+
+@media (max-width: 520px) { .App { gap: 22px; .sessao-interativa { border-radius: 21px; padding: 26px 14px; } .icone-input { width: 24px; height: 24px; } } }
